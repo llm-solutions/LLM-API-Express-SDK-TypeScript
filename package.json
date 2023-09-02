@@ -9,7 +9,20 @@
     "build": "tsc"
   },
   "author": "",
-  "license": "ISC",
+  "keywords": [
+    "llm",
+    "api",
+    "models",
+    "sdk",
+    "llama",
+    "ai",
+    "ml",
+    "artificial intelligence",
+    "machine learning",
+    "large language model",
+    "large language model api"
+  ],
+  "license": "MIT",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "eslint": "^8.46.0",
