@@ -31,7 +31,7 @@ export enum ModelType {
 }
 
 export class LlmApi {
-    base_endpoint = 'https://api.base.place/api/v1';
+    base_endpoint = 'https://prod-api.base.place/api/v1';
     api_token: string;
 
     constructor(api_token: string) {
