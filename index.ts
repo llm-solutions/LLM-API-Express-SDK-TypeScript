@@ -82,13 +82,25 @@ export class LlmApi {
         });
         const stream = response.data;
 
+        var dataStreamBufferStr = "";
+        var errCount = 0;
+
         stream.on('data', (data: Buffer) => {
-            const dataStr = data.toString();
-            if(dataStr.includes("data:")) {
+            dataStreamBufferStr += data.toString().replace("data:", "").trim();
+            try {
                 const parsed: GenerateStreamingResponse = {
-                    line: JSON.parse(dataStr.replace("data:", "")) as Line
+                    line: JSON.parse(dataStreamBufferStr) as Line
                 };
                 onData(parsed);
+
+                dataStreamBufferStr = "";
+                errCount -= 1
+            } catch(error) {
+                errCount += 1;
+                if(errCount >= 2) {
+                    dataStreamBufferStr = "";
+                    errCount = 0;
+                }
             }
         });
     }
